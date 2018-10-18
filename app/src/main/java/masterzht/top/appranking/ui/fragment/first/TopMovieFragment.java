@@ -2,16 +2,13 @@ package masterzht.top.appranking.ui.fragment.first;
 
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
@@ -20,7 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import masterzht.top.appranking.R;
-import masterzht.top.appranking.base.fragmentation.BaseMainFragment;
 import masterzht.top.appranking.model.bean.douban.TopMovieBean;
 import masterzht.top.appranking.ui.fragment.first.adapter.TopMovieAdapter;
 import masterzht.top.appranking.ui.fragment.first.contract.ITopMovieContract;
@@ -32,6 +28,11 @@ import me.yokeyword.fragmentation.SupportFragment;
  * A simple {@link Fragment} subclass.
  */
 public class TopMovieFragment extends SupportFragment implements ITopMovieContract.View {
+
+
+    public XRecyclerView getmRecyclerView() {
+        return mRecyclerView;
+    }
 
     private XRecyclerView mRecyclerView;
     private TopMovieAdapter mAdapter;
@@ -81,12 +82,6 @@ public class TopMovieFragment extends SupportFragment implements ITopMovieContra
 
         initData();
 
-
-
-
-
-
-
         initRefresh();
 
         return view;
@@ -100,35 +95,16 @@ public class TopMovieFragment extends SupportFragment implements ITopMovieContra
             @Override
             public void onRefresh() {
                        //refresh data here
-
-
                 refreshTime ++;
                 times = 0;
-                new Handler().postDelayed(new Runnable(){
-                    public void run() {
-                        listData.clear();
-                        topMoviePresenter.getTopMovie(0,10);
-                        mRecyclerView.refreshComplete();
+                listData.clear();
+                topMoviePresenter.getTopMovie(0,10);
 
-                    }
-
-                }, 1000);            //refresh data here
             }
 
             @Override
             public void onLoadMore() {
-
-
-
-                    new Handler().postDelayed(new Runnable(){
-                        public void run() {
-                            //mRecyclerView.loadMoreComplete();
                             topMoviePresenter.getTopMovie(listData.size(),10);
-                            mRecyclerView.loadMoreComplete();
-
-                        }
-                    }, 1000);
-
             }
 
         });

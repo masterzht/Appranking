@@ -4,11 +4,8 @@ package masterzht.top.appranking.ui.fragment.first;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -19,9 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import masterzht.top.appranking.R;
-import masterzht.top.appranking.base.fragmentation.BaseMainFragment;
 import masterzht.top.appranking.model.bean.novel.RankDetailBean;
-import masterzht.top.appranking.ui.fragment.first.adapter.RankCategoryAdapter;
 import masterzht.top.appranking.ui.fragment.first.adapter.RankDetailAdapter;
 import masterzht.top.appranking.ui.fragment.first.contract.IRankDetailContract;
 import masterzht.top.appranking.ui.fragment.first.presenter.RankDetailPresenter;
@@ -68,10 +63,7 @@ public class RankDetailFragment extends SupportFragment implements IRankDetailCo
         View view=inflater.inflate(R.layout.fragment_rank_detail, container, false);
         listData=new ArrayList<RankDetailBean.RankingBean.BooksBean>();
 
-
         initData();
-
-
 
         //Recyclerview
         mRecyclerView = (XRecyclerView)view.findViewById(R.id.recyclerview);

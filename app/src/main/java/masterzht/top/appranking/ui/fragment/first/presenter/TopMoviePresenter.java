@@ -8,6 +8,7 @@ import masterzht.top.appranking.base.RxPresenter;
 import masterzht.top.appranking.model.api.ApiManager;
 import masterzht.top.appranking.model.api.IDoubanApi;
 import masterzht.top.appranking.model.bean.douban.TopMovieBean;
+import masterzht.top.appranking.ui.fragment.first.TopMovieFragment;
 import masterzht.top.appranking.ui.fragment.first.contract.ITopMovieContract;
 
 /**
@@ -34,6 +35,12 @@ public class TopMoviePresenter extends RxPresenter<ITopMovieContract.View> imple
                             @Override
                             public void accept(TopMovieBean topMovieBean) throws Exception {
                                 mView.showTopMovie(topMovieBean.getSubjects(), start, count);
+                                if (start==0){
+                                ((TopMovieFragment)mView).getmRecyclerView().refreshComplete();
+                                }
+                                else {
+                                    ((TopMovieFragment)mView).getmRecyclerView().loadMoreComplete();
+                                }
                             }
                         }
 

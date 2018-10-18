@@ -8,6 +8,7 @@ import masterzht.top.appranking.base.RxPresenter;
 import masterzht.top.appranking.model.api.ApiManager;
 import masterzht.top.appranking.model.api.INovelApi;
 import masterzht.top.appranking.model.bean.novel.RankCategoryBean;
+import masterzht.top.appranking.ui.fragment.first.RankCategoryFragment;
 import masterzht.top.appranking.ui.fragment.first.contract.IRankCategoryContract;
 
 public class RankCategoryPresenter extends RxPresenter<IRankCategoryContract.View> implements IRankCategoryContract.Presenter<IRankCategoryContract.View>  {
@@ -30,6 +31,7 @@ public class RankCategoryPresenter extends RxPresenter<IRankCategoryContract.Vie
                             @Override
                             public void accept(RankCategoryBean rankCategoryBean) throws Exception {
                                 mView.showRankCategory(rankCategoryBean);
+                                ((RankCategoryFragment)mView).getmRecyclerView().refreshComplete();
                             }
                         }
 

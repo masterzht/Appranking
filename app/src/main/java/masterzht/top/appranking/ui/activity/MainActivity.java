@@ -56,7 +56,6 @@ import masterzht.top.appranking.ui.fragment.first.TopMovieFragment;
 import masterzht.top.appranking.ui.fragment.fourth.FourthTabFragment;
 import masterzht.top.appranking.ui.fragment.third.ThirdTabFragment;
 import masterzht.top.appranking.utils.JsonParser;
-import me.yokeyword.fragmentation.SupportFragment;
 import me.yokeyword.fragmentation.anim.DefaultHorizontalAnimator;
 import me.yokeyword.fragmentation.anim.FragmentAnimator;
 

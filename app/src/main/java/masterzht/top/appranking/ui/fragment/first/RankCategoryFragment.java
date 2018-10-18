@@ -43,6 +43,10 @@ import me.yokeyword.fragmentation.SupportFragmentDelegate;
  */
 public class RankCategoryFragment extends SupportFragment implements IRankCategoryContract.View {
 
+    public XRecyclerView getmRecyclerView() {
+        return mRecyclerView;
+    }
+
     private XRecyclerView mRecyclerView;
     private ArrayList<RankCategoryBean.RankingsBean> listData;
     private RankCategoryAdapter rankCategoryAdapter;
@@ -79,15 +83,6 @@ public class RankCategoryFragment extends SupportFragment implements IRankCatego
         mRecyclerView.setLayoutManager(layoutManager);
 
         rankCategoryAdapter = new RankCategoryAdapter(getContext(), listData);
-        /*rankCategoryAdapter.setOnItemClickListener(
-                new RankCategoryAdapter.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(int position) {
-                        Toast.makeText(App.getContext(), "啦啦啦啦"+position, Toast.LENGTH_SHORT).show();
-                    }
-                }
-        );*/
-        //rankCategoryAdapter.setOnItemClickListener(this);
         mRecyclerView.setAdapter(rankCategoryAdapter);
 
         rankCategoryAdapter.setOnItemClickListener(new RankCategoryAdapter.OnItemClickListener() {
@@ -127,16 +122,9 @@ public class RankCategoryFragment extends SupportFragment implements IRankCatego
             @Override
             public void onRefresh() {
 
-                new Handler().postDelayed(new Runnable() {
-                    public void run() {
-                        listData.clear();
-                        rankCategoryPresenter.getRankCategory();
-                        mRecyclerView.refreshComplete();
+                listData.clear();
+                rankCategoryPresenter.getRankCategory();
 
-
-                    }
-
-                }, 1000);            //refresh data here
             }
 
             @Override
