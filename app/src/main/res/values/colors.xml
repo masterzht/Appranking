@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1da8fe</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+
+
+    <color name="colorGreen">#ff669900</color>
+    <color name="colorGray">#ccc</color>
+
+    <color name="colorWhite">#FFF9F2F2</color>
+
+    <color name="hh">#1da8fe</color>
+
+    <!--文字颜色-->
+    <color name="textPrimary">#212121</color><!--用于重要级文字信息，如标题，子模块功能文字等-->
+    <color name="colorDivider">#ffe0e0e0</color> <!-- 分割线颜色-->
+
+</resources>
