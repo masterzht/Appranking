@@ -80,9 +80,9 @@ public class TopMovieFragment extends SupportFragment implements ITopMovieContra
         mAdapter = new TopMovieAdapter(listData);
         mRecyclerView.setAdapter(mAdapter);
 
-        initData();
+        //initData();
 
-        initRefresh();
+        //initRefresh();
 
         return view;
     }

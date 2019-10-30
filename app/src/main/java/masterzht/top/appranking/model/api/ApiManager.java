@@ -95,6 +95,8 @@ public class ApiManager {
             mOkHttpClient = new OkHttpClient.Builder()
                     .cache(cache)
                     .retryOnConnectionFailure(true)
+
+
                     //有网络时的拦截器
                     .addNetworkInterceptor(reWriteCacheControlInterceptor)
                     //没网络时的拦截器

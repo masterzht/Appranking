@@ -18,6 +18,23 @@ public class RankDetailPresenter extends RxPresenter<IRankDetailContract.View> i
         this.mView = mView;
     }
 
+
+     /*new Subscriber<RankDetailBean>() {
+        @Override
+        public void onCompleted() {
+
+        }
+
+        @Override
+        public void onError(Throwable e) {
+
+        }
+
+        @Override
+        public void onNext(RankDetailBean rankDetailBean) {
+            mView.showRankDetail(rankDetailBean.getRanking().getBooks(),loadmoretimes);
+        }
+    }*/
     @Override
     public void getRankDetail(String id,int loadmoretimes) {
         INovelApi iNovelApi = ApiManager.getInstance().getiNovelApi();
@@ -25,10 +42,19 @@ public class RankDetailPresenter extends RxPresenter<IRankDetailContract.View> i
         addSubscrebe(flowable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        new Consumer<RankDetailBean>() {
+
+                            new Consumer<RankDetailBean>() {
+                                @Override
+                                public void accept(RankDetailBean rankDetailBean) throws Exception {
+                                    mView.showRankDetail(rankDetailBean.getRanking().getBooks(),loadmoretimes);
+                                }
+
+
+                            }
+                            ,new Consumer<Throwable>() {
                             @Override
-                            public void accept(RankDetailBean rankDetailBean) throws Exception {
-                                mView.showRankDetail(rankDetailBean.getRanking().getBooks(),loadmoretimes);
+                            public void accept(Throwable throwable) throws Exception {
+                                android.util.Log.i("hhh", "错误是还好还好哈还好还好哈" + throwable.toString());
                             }
                         }
 
